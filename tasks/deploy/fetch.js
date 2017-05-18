@@ -16,6 +16,13 @@ module.exports = function (gruntOrShipit) {
   function task() {
     var shipit = utils.getShipit(gruntOrShipit);
 
+    // If no Github repo url is provided we can skip the whole git pull request
+    if (shipit.config.repositoryUrl) {
+      return Promise.promisify(function () {
+        shipit.emit('fetched');
+      })();
+    }
+
     return createWorkspace()
     .then(initRepository)
     .then(setGitConfig)
