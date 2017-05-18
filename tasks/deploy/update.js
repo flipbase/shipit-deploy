@@ -72,7 +72,7 @@ module.exports = function (gruntOrShipit) {
 
       shipit.log('Copy project to remote servers.');
 
-      return shipit.remoteCopy(__dirname + '/', shipit.releasePath, options)
+      return shipit.remoteCopy(process.cwd() + '/', shipit.releasePath, options)
       .then(function () {
         shipit.log(chalk.green('Finished copy.'));
       });
