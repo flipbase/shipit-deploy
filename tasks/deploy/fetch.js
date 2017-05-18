@@ -20,7 +20,7 @@ module.exports = function (gruntOrShipit) {
     if (!shipit.config.repositoryUrl) {
       return Promise.promisify(function () {
         shipit.emit('fetched');
-      })();
+      });
     }
 
     return createWorkspace()
